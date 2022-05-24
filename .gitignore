@@ -24,6 +24,5 @@ hs_err_pid*
 
 # Javascript & Nextjs
 node_modules
-build
 .idea
 .next
