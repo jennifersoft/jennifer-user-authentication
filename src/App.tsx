@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="App">
       <div className="toolbar">
-        대시보드 종류 : &nbsp;
+        <strong>대시보드 종류</strong> &nbsp;&nbsp;&nbsp;
         <select onChange={onChangeHandler}>
           <option value={getDashboardUrl(0)}>시스템 관리자</option>
           <option value={getDashboardUrl(1)}>사용자정의 대시보드</option>
