@@ -19,15 +19,20 @@ function App() {
     setUrl(e.target.value);
   }
 
+  const onOpenJennifer5 = () => {
+    window.open(HOST);
+  }
+
   return (
     <div className="App">
       <div className="toolbar">
-        제니퍼5 대시보드 : &nbsp;
+        대시보드 종류 : &nbsp;
         <select onChange={onChangeHandler}>
           <option value={getDashboardUrl(0)}>시스템 관리자</option>
           <option value={getDashboardUrl(1)}>사용자정의 대시보드</option>
           <option value="mixed">대시보드 병합</option>
-        </select>
+        </select>&nbsp;
+        <button onClick={onOpenJennifer5}>제니퍼5 열기</button>
       </div>
       {url === 'mixed' ?
           (
