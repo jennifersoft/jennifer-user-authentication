@@ -11,6 +11,7 @@
 server_view.conf 파일에서 다음과 같은 옵션을 추가해놔야 함 (add_same_site_none_cookie = true)
 
 You may serve it with a static server:
-
+`
 npm install -g serve
 serve -s build
+`
