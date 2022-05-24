@@ -25,12 +25,12 @@ function App() {
   return (
     <div className="App">
       <div className="toolbar">
-        <strong>대시보드 종류</strong> &nbsp;&nbsp;&nbsp;
+        <strong>대시보드 종류</strong>
         <select onChange={onChangeHandler}>
           <option value={getDashboardUrl(0)}>시스템 관리자</option>
           <option value={getDashboardUrl(1)}>사용자정의 대시보드</option>
           <option value="mixed" selected>Iframe 병합</option>
-        </select>&nbsp;
+        </select>
         <button onClick={onOpenJennifer5}>제니퍼5 열기</button>
       </div>
       {url === 'mixed' ?
