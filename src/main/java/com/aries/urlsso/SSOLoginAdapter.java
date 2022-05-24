@@ -9,6 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 
 public class SSOLoginAdapter implements SSOLoginHandler {
     public UserData preHandle(HttpServletRequest request) {
-        return new UserData("guest", "guest");
+        String id = request.getParameter("id");
+        String password = request.getParameter("password");
+
+        if (id != null && password != null) {
+            LogUtil.info("Logging in with querystring : " + id + "," + password);
+            return new UserData(id, password);
+        } else {
+            String defaultId = PropertyUtil.getValue("url-sso", "DEFAULT_ID", "guest");
+            String defaultPassword = PropertyUtil.getValue("url-sso", "DEFAULT_PASSWORD", "guest");
+
+            LogUtil.info("Logging in with properties : " + id + "," + password);
+            return new UserData(defaultId, defaultPassword);
+        }
     }
 }
