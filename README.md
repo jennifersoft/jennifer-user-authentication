@@ -10,16 +10,16 @@
 
 ## 제니퍼 뷰서버 설정
 
- 1. server_view.conf -> 'add_same_site_none_cookie = true' 추가
- 2. 설정 -> 어댑터 및 플러그인에 'url-sso_jennifer-1.0.0.jar' 추가
- 3. 크롬의 Iframe 보안 정책으로 인해 제니퍼 뷰서버는 HTTPS로 실행해야 함
+ 1. 크롬의 Iframe 보안 정책으로 인해 제니퍼 뷰서버는 HTTPS로 실행해야 함
+ 2. server_view.conf -> 'add_same_site_none_cookie = true' 추가
+ 3. 설정 -> 어댑터 및 플러그인에 'url-sso_jennifer-1.0.0.jar' 추가
+
+
 ![다운로드](https://user-images.githubusercontent.com/1277117/169983899-83c00ad9-da4e-4aff-bae1-d7c6d75df6e6.png)
 
 ## 샘플 대시보드 실행
 
-You may serve it with a static server:
-`
+```shell
 npm install -g serve
-
 serve -s build
-`
+```
