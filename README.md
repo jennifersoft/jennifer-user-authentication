@@ -29,3 +29,25 @@ serve -s build
 ## SSOLoginAdapter 클래스
 
 본 샘플에서는 URL 쿼리스트링으로 제니퍼5 사용자의 아이디와 비밀번호를 받아오지만 상황에 따라 HTTP 요청 헤더를 쓰거나 어댑터 옵션을 활용하는 방법도 있다.
+```java
+public class SSOLoginAdapter implements SSOLoginHandler {
+    public UserData preHandle(HttpServletRequest request) {
+        String id = request.getParameter("id");
+        String password = request.getParameter("password");
+
+        // URL 쿼리스트링으로 제니퍼 사용자의 아이디와 비밀번호를 받아올 수 있음
+        if (id != null && password != null) {
+            LogUtil.info("Logging in with querystring : " + id + "," + password);
+            return new UserData(id, password);
+        // 아이디와 비밀번호를 URL 쿼리스트링으로 노출하기 싫으면 어댑터 옵션에 하드코딩해서 숨길 수 있음
+        // 또는 HTTP 요청 헤더를 활용하는 방법도 있음
+        } else {
+            String defaultId = PropertyUtil.getValue("url-sso", "DEFAULT_ID", "guest");
+            String defaultPassword = PropertyUtil.getValue("url-sso", "DEFAULT_PASSWORD", "guest");
+
+            LogUtil.info("Logging in with properties : " + id + "," + password);
+            return new UserData(defaultId, defaultPassword);
+        }
+    }
+}
+```
