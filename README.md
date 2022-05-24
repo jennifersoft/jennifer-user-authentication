@@ -25,3 +25,7 @@
 npm install -g serve
 serve -s build
 ```
+
+## SSOLoginAdapter 클래스
+
+본 샘플에서는 URL 쿼리스트링으로 제니퍼5 사용자의 아이디와 비밀번호를 받아오지만 상황에 따라 HTTP 요청 헤더를 쓰거나 어댑터 옵션을 활용하는 방법도 있다.
