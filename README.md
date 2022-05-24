@@ -1,4 +1,4 @@
-# jennier-user-authentication
+# 제니퍼 사용자 인증 활용하기
 
 제니퍼 화면 및 대시보드 Iframe 연동 샘플입니다.
 
