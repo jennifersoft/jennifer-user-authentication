@@ -18,7 +18,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- 플러그인 jar 파일 생성 디렉토리 및 파일 네이밍 설정 -->
-        <plugin.output.directoryName>${project.basedir}/dist</plugin.output.directoryName>
+        <plugin.output.directoryName>${project.basedir}</plugin.output.directoryName>
         <plugin.output.fileName>${project.artifactId}_${env}-${project.version}</plugin.output.fileName>
     </properties>
 
