@@ -12,8 +12,7 @@ function getDashboardUrl(index: number) {
 }
 
 function App() {
-  const defaultUrl = getDashboardUrl(0);
-  const [url, setUrl] = useState<string>(defaultUrl);
+  const [url, setUrl] = useState<string>("mixed");
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setUrl(e.target.value);
@@ -30,15 +29,15 @@ function App() {
         <select onChange={onChangeHandler}>
           <option value={getDashboardUrl(0)}>시스템 관리자</option>
           <option value={getDashboardUrl(1)}>사용자정의 대시보드</option>
-          <option value="mixed">대시보드 병합</option>
+          <option value="mixed" selected>Iframe 병합</option>
         </select>&nbsp;
         <button onClick={onOpenJennifer5}>제니퍼5 열기</button>
       </div>
       {url === 'mixed' ?
           (
               <div className="iframe-list">
-                <iframe className="iframe" src={getDashboardUrl(0)}></iframe>
                 <iframe className="iframe" src={getDashboardUrl(1)}></iframe>
+                <iframe className="iframe" src={getDashboardUrl(0)}></iframe>
               </div>
           ) :
           (
