@@ -56,6 +56,4 @@ https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234
 사용자 인증이 완료되면 이미 설정된 시작화면으로 리다이렉트 되지만 다음과 같이 'redirect' 매개변수에 리다이렉트 될 제니퍼 화면의 경로를 지정해주면 된다. 단, 자바스크립트 네이티브 함수인 encodeURIComponent 함수를 통해 인코딩을 하는게 안전하다.
 
 ```shell
-https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fuserdefine%2Fdashboard%3Fkey%3Dffca2b8b-4b35-4688-8282-c236e0d30b3c
-```
-
+https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fuserdefine%2Fdashboard%3Fkey%3Dffca2b8b-4b35-4688-8282-c236e0d30b3c%26layout%3Diframe
