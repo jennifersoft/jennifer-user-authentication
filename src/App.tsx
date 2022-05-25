@@ -19,7 +19,15 @@ function App() {
   }
 
   const onOpenJennifer5 = () => {
-    window.open(HOST);
+    window.open(`${HOST}/login/sso?id=${USER_ID}&password=${USER_PASSWORD}`);
+  }
+
+  const onOpenXViewPopup = () => {
+    window.open(
+        `${HOST}/login/sso?id=${USER_ID}&password=${USER_PASSWORD}&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146`,
+        'xviewPopup',
+        'width=1280,height=768'
+    );
   }
 
   return (
@@ -32,6 +40,7 @@ function App() {
           <option value="mixed" selected>Iframe 병합</option>
         </select>
         <button onClick={onOpenJennifer5}>제니퍼5 열기</button>
+        <button onClick={onOpenXViewPopup}>XView 팝업 열기</button>
       </div>
       {url === 'mixed' ?
           (

@@ -14,6 +14,10 @@
   margin-right: 4px;
 }
 
+.toolbar button {
+  margin-right: 4px;
+}
+
 .iframe-list {
   display: flex;
 }
