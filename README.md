@@ -28,6 +28,10 @@ serve -s build
 
 ![다운로드](https://user-images.githubusercontent.com/1277117/170180072-c22b87bb-7697-405a-b5d7-ba3e8069e329.png)
 
+샘플 화면은 아래 두개의 사용자정의 대시보드를 Iframe으로 로드하는 방식으로 구현했음
+ - https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-4688-8282-c236e0d30b3c
+ - https://support.jennifersoft.com:7979/userdefine/dashboard?key=0eae211c-d7b6-4696-8f1e-57c15b42f462
+ 
 ## SSOLoginAdapter 클래스
 
 본 샘플에서는 URL 쿼리스트링으로 제니퍼5 사용자의 아이디와 비밀번호를 받아오지만 상황에 따라 HTTP 요청 헤더나 어댑터 옵션을 활용해도 되는데, 구현 방식은 고객사 상황에 맞게 정하면 된다.
