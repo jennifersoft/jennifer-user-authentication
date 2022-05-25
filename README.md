@@ -54,7 +54,11 @@ public class SSOLoginAdapter implements SSOLoginHandler {
 
 ## 제니퍼 URL로 인증하기
 
-SSO 로그인 어댑터를 제니퍼 설정에 추가했다면 다음과 같은 URL로 사용자 인증을 브라우저 주소창을 통해 시도할 수 있다. 참고로 아래 URL은 실제로 동작하며, 테스트를 위해 이미 환경을 구성했다. 아래 사용자 정보는 실제로 사용할 수 있으며, 본 샘플을 위해 사전에 생성해두었다.
+SSO 로그인 어댑터를 제니퍼 설정에 추가했다면 다음과 같은 URL로 사용자 인증을 브라우저 주소창을 통해 시도할 수 있다. 
+
+> /login/sso (GET | POST) 
+
+참고로 아래 URL은 실제로 동작하며, 테스트를 위해 이미 환경을 구성했다. 아래 사용자 정보는 실제로 사용할 수 있으며, 본 샘플을 위해 사전에 생성해두었다.
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234
@@ -75,8 +79,6 @@ https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-468
 ## XView 트랜잭션 분석 팝업 활용하기
 
 다른 솔루션과 제니퍼를 연동할 때, 가장 많이 사용하는 화면이 XView 트랜잭션 분석 팝업이다. 다음과 같이 URL 쿼리스트링을 통해 XView 트랜잭션 분석 팝업을 열 수 있다.
-
-> login/sso (GET | POST)
 
 ```shell
 https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-1523200512219595557&searchTime=1653453568146
