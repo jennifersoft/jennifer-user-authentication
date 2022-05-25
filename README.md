@@ -47,17 +47,13 @@ public class SSOLoginAdapter implements SSOLoginHandler {
 
 ## 제니퍼5 URL로 인증하기
 
-SSO 로그인 어댑터를 제니퍼 설정에 추가했다면 다음과 같은 URL로 사용자 인증을 브라우저 주소창을 통해 시도할 수 있다. 참고로 아래 URL은 실제로 동작하며, 테스트를 위해 이미 환경을 구성했다. 아래 사용자 정보는 실제 사용할 수 있으며, 본 샘플을 위해 사전에 생성해두었다.
+SSO 로그인 어댑터를 제니퍼 설정에 추가했다면 다음과 같은 URL로 사용자 인증을 브라우저 주소창을 통해 시도할 수 있다. 참고로 아래 URL은 실제로 동작하며, 테스트를 위해 이미 환경을 구성했다. 아래 사용자 정보는 실제로 사용할 수 있으며, 본 샘플을 위해 사전에 생성해두었다.
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234
 ```
 
 사용자 인증이 완료되면 이미 설정된 시작화면으로 리다이렉트 되지만 다음과 같이 임의로 지정할 수 도 있다.
-
-```shell
-https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-3401872944142564948&searchTime=1653381721418
-```
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3401872944142564948%26searchTime%3D1653381721418%26redirect%3D%252Fpopup%252FxviewAnalysis%253FdomainId%253D3000%2526transactionId%253D-3401872944142564948%2526searchTime%253D1653381721418
