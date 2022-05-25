@@ -70,3 +70,10 @@ https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect
 ```shell
 https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-4688-8282-c236e0d30b3c&layout=iframe
 ```
+
+## 부록 - XView 트랜잭션 분석 팝업
+
+다른 솔루션과 제니퍼를 연동할 때, 가장 많이 사용하는 화면이 XView 트랜잭션 분석 팝업이다. 다음과 같이 URL 쿼리스트링을 통해 XView 트랜잭션 분석 팝업을 열 수 있다.
+```shell
+https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-1523200512219595557&searchTime=1653453568146
+```shell
