@@ -86,7 +86,7 @@ SSO 로그인 어댑터 없이 'redirect' 매개변수를 사용하면, 로그�
 https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-1523200512219595557&searchTime=1653453568146&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146
 ```
 
-SSO 로그인 어댑터가 제니퍼 설정에 추가되어있다면, 아래와 같은 URL로 외부에서 바로 XView 트랜잭션 분석 팝업을 열 수 있다.
+SSO 로그인 어댑터를 사용하고 있다면, 아래와 같은 URL로 외부에서 바로 XView 트랜잭션 분석 팝업을 열 수 있다.
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146
