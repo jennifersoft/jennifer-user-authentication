@@ -53,7 +53,7 @@ SSO 로그인 어댑터를 제니퍼 설정에 추가했다면 다음과 같은 
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234
 ```
 
-사용자 인증이 완료되면 이미 설정된 시작화면으로 리다이렉트 되지만 다음과 같이 임의로 지정할 수 도 있다.
+사용자 인증이 완료되면 이미 설정된 시작화면으로 리다이렉트 되지만 다음과 같이 'redirect' 매개변수에 리다이렉트 될 제니퍼 화면의 경로를 지정해주면 된다. 단, 자바스크립트 네이티브 함수인 encodeURIComponent 함수를 통해 인코딩을 하는게 안전하다.
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3401872944142564948%26searchTime%3D1653381721418%26redirect%3D%252Fpopup%252FxviewAnalysis%253FdomainId%253D3000%2526transactionId%253D-3401872944142564948%2526searchTime%253D1653381721418
