@@ -57,3 +57,10 @@ https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fuserdefine%2Fdashboard%3Fkey%3Dffca2b8b-4b35-4688-8282-c236e0d30b3c%26layout%3Diframe
+```
+
+사용자 인증 및 리다이렉트 URL의 실제 URL은 다음과 같다. 좌측 메뉴를 제거하기 위해 'layout' 매개변수의 값을 'iframe'으로 설정하였다.
+
+```shell
+https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-4688-8282-c236e0d30b3c&layout=iframe
+```
