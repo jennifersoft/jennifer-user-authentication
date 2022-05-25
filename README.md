@@ -34,7 +34,7 @@ serve -s build
  
 ## SSOLoginAdapter 클래스
 
-본 샘플에서는 URL 쿼리스트링으로 제니퍼5 사용자의 아이디와 비밀번호를 받아오지만 상황에 따라 HTTP 요청 헤더나 어댑터 옵션을 활용해도 되는데, 구현 방식은 고객사 상황에 맞게 정하면 된다.
+본 샘플에서는 URL 쿼리스트링으로 제니퍼 사용자의 아이디와 비밀번호를 받아오지만 상황에 따라 HTTP 요청 헤더나 어댑터 옵션을 활용해도 되는데, 구현 방식은 고객사 상황에 맞게 정하면 된다.
 
 ```java
 public class SSOLoginAdapter implements SSOLoginHandler {
