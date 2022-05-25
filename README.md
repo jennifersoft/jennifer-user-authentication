@@ -35,6 +35,7 @@ serve -s build
 ## SSOLoginAdapter 클래스
 
 본 샘플에서는 URL 쿼리스트링으로 제니퍼5 사용자의 아이디와 비밀번호를 받아오지만 상황에 따라 HTTP 요청 헤더나 어댑터 옵션을 활용해도 되는데, 구현 방식은 고객사 상황에 맞게 정하면 된다.
+
 ```java
 public class SSOLoginAdapter implements SSOLoginHandler {
     public UserData preHandle(HttpServletRequest request) {
@@ -82,5 +83,11 @@ https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transact
 SSO 로그인 어댑터 없이 'redirect' 매개변수를 사용하면, 로그인이 안된 상태에서는 로그인 페이지로 이동하고, 로그인 이후에 해당 화면으로 다시 리다이렉트 된다.
 
 ```shell
-support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-1523200512219595557&searchTime=1653453568146&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146
+https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-1523200512219595557&searchTime=1653453568146&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146
+```
+
+SSO 로그인 어댑터가 제니퍼 설정에 추가되어있다면, 아래와 같은 URL로 외부에서 바로 XView 트랜잭션 분석 팝업을 열 수 있다.
+
+```shell
+https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146
 ```
