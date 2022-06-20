@@ -33,14 +33,14 @@ function App() {
   return (
     <div className="App">
       <div className="toolbar">
-        <strong>대시보드 종류</strong>
+        <strong>Dashboard Types</strong>
         <select onChange={onChangeHandler}>
-          <option value={getDashboardUrl(0)}>시스템 관리자</option>
-          <option value={getDashboardUrl(1)}>사용자정의 대시보드</option>
-          <option value="mixed" selected>Iframe 병합</option>
+          <option value={getDashboardUrl(0)}>System Admin</option>
+          <option value={getDashboardUrl(1)}>Custom Dashboard</option>
+          <option value="mixed" selected>Merging iframes</option>
         </select>
-        <button onClick={onOpenJennifer5}>제니퍼5 열기</button>
-        <button onClick={onOpenXViewPopup}>XView 팝업 열기</button>
+        <button onClick={onOpenJennifer5}>Open JENNIFER5</button>
+        <button onClick={onOpenXViewPopup}>Open X-View popup</button>
       </div>
       {url === 'mixed' ?
           (
