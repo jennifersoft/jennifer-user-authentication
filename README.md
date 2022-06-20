@@ -16,7 +16,7 @@ This sample covers the following topics:
   3. Add 'url-sso_jennifer-1.0.0.jar' to Settings -> Adapters and Plugins
 
 
-![download](https://user-images.githubusercontent.com/1277117/169983899-83c00ad9-da4e-4aff-bae1-d7c6d75df6e6.png)
+![download](https://user-images.githubusercontent.com/1277117/174537222-45085953-7250-4106-ab44-97ea5c1a6bee.png)
 
 ## Running the sample dashboard
 
@@ -27,7 +27,7 @@ npm install -g serve
 serve -s build
 ```
 
-![Download](https://user-images.githubusercontent.com/1277117/170180072-c22b87bb-7697-405a-b5d7-ba3e8069e329.png)
+![Download](https://user-images.githubusercontent.com/1277117/174537241-e7c504a4-1690-40fd-a78b-413f4ef8c93e.png)
 
 The sample screen is implemented by loading the following two custom dashboards into an Iframe.
  - https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-4688-8282-c236e0d30b3c
