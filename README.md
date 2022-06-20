@@ -87,7 +87,7 @@ https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transact
 SSO 로그인 어댑터 없이 'redirect' 매개변수를 사용하면, 로그인이 안된 상태에서는 로그인 페이지로 이동하고, 로그인 이후에 해당 화면으로 다시 리다이렉트 된다.
 
 ```shell
-https://support.jennifersoft.com:7979/popup/xviewAnalysis?/popup/xviewAnalysis?domainId=3000&transactionId=-3150495411826095874&searchTime=1655600449475&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3150495411826095874%26searchTime%3D1655600449475
+https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-3150495411826095874&searchTime=1655600449475&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3150495411826095874%26searchTime%3D1655600449475
 ```
 
 SSO 로그인 어댑터를 사용하고 있다면, 아래와 같은 URL로 외부에서 바로 XView 트랜잭션 분석 팝업을 열 수 있다.
