@@ -82,16 +82,17 @@ https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-468
 When linking JENNIFER with other solutions, the most used screen is the XView transaction analysis popup. A user open the XView transaction analysis popup through the URL querystring as follows.
 
 ```shell
-https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-1523200512219595557&searchTime=1653453568146
+https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-3150495411826095874&searchTime=1655600449475
 ```
 
 if users use the 'redirect' parameter without an SSO login adapter, you will be redirected to the login page if you are not logged in, and redirected back to the corresponding screen after logging in.
 
 ```shell
-https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-1523200512219595557&searchTime=1653453568146&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146
+https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-3150495411826095874&searchTime=1655600449475&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3150495411826095874%26searchTime%3D1655600449475
 ```
+
 If users are using the SSO login adapter, user can open the XView transaction analysis popup directly from the outside with the URL below.
 
 ```shell
-https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146
+https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3150495411826095874%26searchTime%3D1655600449475
 ```
