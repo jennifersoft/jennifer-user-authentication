@@ -81,17 +81,17 @@ https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-468
 다른 솔루션과 제니퍼를 연동할 때, 가장 많이 사용하는 화면이 XView 트랜잭션 분석 팝업이다. 다음과 같이 URL 쿼리스트링을 통해 XView 트랜잭션 분석 팝업을 열 수 있다.
 
 ```shell
-https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=2897505891998420107&searchTime=1655309599707
+https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-3150495411826095874&searchTime=1655600449475
 ```
 
 SSO 로그인 어댑터 없이 'redirect' 매개변수를 사용하면, 로그인이 안된 상태에서는 로그인 페이지로 이동하고, 로그인 이후에 해당 화면으로 다시 리다이렉트 된다.
 
 ```shell
-https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=2897505891998420107&searchTime=1655309599707&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D2897505891998420107%26searchTime%3D1655309599707
+https://support.jennifersoft.com:7979/popup/xviewAnalysis?/popup/xviewAnalysis?domainId=3000&transactionId=-3150495411826095874&searchTime=1655600449475&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3150495411826095874%26searchTime%3D1655600449475
 ```
 
 SSO 로그인 어댑터를 사용하고 있다면, 아래와 같은 URL로 외부에서 바로 XView 트랜잭션 분석 팝업을 열 수 있다.
 
 ```shell
-https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D2897505891998420107%26searchTime%3D1655309599707
+https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3150495411826095874%26searchTime%3D1655600449475
 ```
