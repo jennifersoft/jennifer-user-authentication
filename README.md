@@ -1,40 +1,41 @@
-# 통합 환경 구성을 위한 제니퍼 사용자 인증
+# JENNIFER user authentication for integrated environment configuration
 
-제니퍼 화면 및 대시보드 Iframe 연동 샘플이다. 고객사 통합 대시보드에 제니퍼 대시보드를 공유하기 URL을 사용하여 Iframe으로 보여주고 있는데, 2개 이상의 Iframe을 사용하거나 제니퍼의 다른 화면으로 이동이 제한되는 문제가 있다.
+This is a Jennifer screen and dashboard Iframe interworking sample.
+When trying to display the Jennifer dashboard as an Iframe using the sharing URL, the use of two or more Iframes and movement to other screens are restricted.
 
-본 샘플에서 다룰 내용은 다음과 같음
+This sample covers the following topics:
 
- - URL 쿼리 스트링으로 제니퍼 인증하는 SSO 어댑터 구현하기
- - SSO 어댑터를 활용한 제니퍼 화면 열기
- - SSO 어댑터를 활용한 제니퍼 대시보드 Iframe으로 호출하기
+  - Implementing SSO adapter that authenticates JENNIFER with URL query string
+  - Open JENNIFER  using SSO adapter
+  - Calling the Jennifer Dashboard Iframe using the SSO adapter
 
-## 제니퍼 뷰서버 설정
+## Jennifer View Server Settings
 
- 1. 크롬의 Iframe 보안 정책으로 인해 제니퍼 뷰서버는 HTTPS로 실행해야 함
- 2. server_view.conf -> 'add_same_site_none_cookie = true' 추가
- 3. 설정 -> 어댑터 및 플러그인에 'url-sso_jennifer-1.0.0.jar' 추가
+  1. Due to Chrome's Iframe security policy, the JENNIFER view server must be run with HTTPS
+  2. Add 'add_same_site_none_cookie = true' to server_view.conf
+  3. Add 'url-sso_jennifer-1.0.0.jar' to Settings -> Adapters and Plugins
 
 
-![다운로드](https://user-images.githubusercontent.com/1277117/169983899-83c00ad9-da4e-4aff-bae1-d7c6d75df6e6.png)
+![download](https://user-images.githubusercontent.com/1277117/169983899-83c00ad9-da4e-4aff-bae1-d7c6d75df6e6.png)
 
-## 샘플 대시보드 실행
+## Running the sample dashboard
 
-프로젝트를 체크아웃 받은 후, 해당 디렉토리 안에서 다음과 같은 명령어를 실행해야 함
+After checking out the project, you need to run the following command in the directory
 
 ```shell
 npm install -g serve
 serve -s build
 ```
 
-![다운로드](https://user-images.githubusercontent.com/1277117/170180072-c22b87bb-7697-405a-b5d7-ba3e8069e329.png)
+![Download](https://user-images.githubusercontent.com/1277117/170180072-c22b87bb-7697-405a-b5d7-ba3e8069e329.png)
 
-샘플 화면은 아래 두개의 사용자정의 대시보드를 Iframe으로 로드하는 방식으로 구현했음
+The sample screen is implemented by loading the following two custom dashboards into an Iframe.
  - https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-4688-8282-c236e0d30b3c
  - https://support.jennifersoft.com:7979/userdefine/dashboard?key=0eae211c-d7b6-4696-8f1e-57c15b42f462
  
-## SSOLoginAdapter 클래스
+## SSOLoginAdapter Class
 
-본 샘플에서는 URL 쿼리스트링으로 제니퍼 사용자의 아이디와 비밀번호를 받아오지만 상황에 따라 HTTP 요청 헤더나 어댑터 옵션을 활용해도 되는데, 구현 방식은 고객사 상황에 맞게 정하면 된다.
+In this sample, the JENNIFER user ID and password are obtained through the URL query string. However, depending on the situation, HTTP request headers or adapter options could be used.
 
 ```java
 public class SSOLoginAdapter implements SSOLoginHandler {
@@ -52,45 +53,44 @@ public class SSOLoginAdapter implements SSOLoginHandler {
 }
 ```
 
-## 제니퍼 URL로 인증하기
+## Authenticate with Jennifer URL
 
-SSO 로그인 어댑터를 제니퍼 설정에 추가했다면 다음과 같은 URL로 사용자 인증을 브라우저 주소창을 통해 시도할 수 있다. 
+If the SSO login adapter has been added to the JENNIFER settings, user authentication with the following can be attempted through calling URL.
 
 > /login/sso (GET | POST) 
 
-참고로 아래 URL은 실제로 동작하며, 테스트를 위해 미리 환경을 구성하였다. 아래 사용자 정보는 실제로 사용할 수 있으며, 본 샘플을 위해 사전에 생성해두었다.
+For reference, the URL below actually works, and the environment is configured in advance for testing. The user information below could be used in practice, and is created in advance for this sample.
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234
 ```
 
-사용자 인증이 완료되면 이미 설정된 시작화면으로 리다이렉트 되지만 다음과 같이 'redirect' 매개변수에 리다이렉트 될 제니퍼 화면의 경로를 지정해주면 된다. 단, 자바스크립트 네이티브 함수인 encodeURIComponent 함수를 통해 인코딩을 하는게 안전하다.
+When user authentication is completed, the user is redirected to the preset start screen, but simply specify the path of the JENNIFER screen to be redirected in the 'redirect' parameter as follows. However, it is safe to encode through the encodeURIComponent function, a JavaScript native function.
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fuserdefine%2Fdashboard%3Fkey%3Dffca2b8b-4b35-4688-8282-c236e0d30b3c%26layout%3Diframe
 ```
 
-사용자 인증 및 리다이렉트 URL의 실제 URL은 다음과 같다. 좌측 메뉴를 제거하기 위해 'layout' 매개변수의 값을 'iframe'으로 설정하였다.
+The actual URL of user authentication and redirect URL is as follows. To remove the left menu, the value of the 'layout' parameter is set to 'iframe'.
 
 ```shell
 https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-4688-8282-c236e0d30b3c&layout=iframe
 ```
 
-## XView 트랜잭션 분석 팝업 활용하기
+## Utilizing XView transaction analysis popup
 
-다른 솔루션과 제니퍼를 연동할 때, 가장 많이 사용하는 화면이 XView 트랜잭션 분석 팝업이다. 다음과 같이 URL 쿼리스트링을 통해 XView 트랜잭션 분석 팝업을 열 수 있다.
+When linking JENNIFER with other solutions, the most used screen is the XView transaction analysis popup. A user open the XView transaction analysis popup through the URL querystring as follows.
 
 ```shell
 https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-1523200512219595557&searchTime=1653453568146
 ```
 
-SSO 로그인 어댑터 없이 'redirect' 매개변수를 사용하면, 로그인이 안된 상태에서는 로그인 페이지로 이동하고, 로그인 이후에 해당 화면으로 다시 리다이렉트 된다.
+if users use the 'redirect' parameter without an SSO login adapter, you will be redirected to the login page if you are not logged in, and redirected back to the corresponding screen after logging in.
 
 ```shell
 https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-1523200512219595557&searchTime=1653453568146&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146
 ```
-
-SSO 로그인 어댑터를 사용하고 있다면, 아래와 같은 URL로 외부에서 바로 XView 트랜잭션 분석 팝업을 열 수 있다.
+If users are using the SSO login adapter, user can open the XView transaction analysis popup directly from the outside with the URL below.
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-1523200512219595557%26searchTime%3D1653453568146
