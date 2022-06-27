@@ -1,26 +1,24 @@
-# JENNIFER user authentication for integrated environment configuration
+# 統合環境構成のためのJENNIFERユーザ認証
 
-This is a Jennifer screen and dashboard Iframe interworking sample.
-When trying to display the Jennifer dashboard as an Iframe using the sharing URL, the use of two or more Iframes and movement to other screens are restricted.
+これはJENNIFER画面とダッシュボードをiframeで利用するためのサンプルです。
 
-This sample covers the following topics:
+このサンプルでは次の項目について説明します：
+  - URLクエリ文字列を利用してJENNIFERを認証するSSOアダプタの実装
+  - SSOアダプタを使用してJENNIFER画面表示
+  - SSOアダプタを使用してJENNIFERダッシュボードをiframeで表示
+  
+## JENNIFERビューサーバの設定
 
-  - Implementing SSO adapter that authenticates JENNIFER with URL query string
-  - Open JENNIFER  using SSO adapter
-  - Calling the Jennifer Dashboard Iframe using the SSO adapter
-
-## Jennifer View Server Settings
-
-  1. Due to Chrome's Iframe security policy, the JENNIFER view server must be run with HTTPS
-  2. Add 'add_same_site_none_cookie = true' to server_view.conf
-  3. Add 'url-sso_jennifer-1.0.0.jar' to Settings -> Adapters and Plugins
+  1. Chromeのポリシー上、JENNIFERビューサーバはHTTPSで実行しなければなりません。
+  2. server_view.confに'add_same_site_none_cookie = true'を追記します。
+  3. 「管理＞アダプタ及びプラグイン」で'url-sso_jennifer-1.0.0.jar'を追加します。
 
 
 ![download](https://user-images.githubusercontent.com/1277117/174537222-45085953-7250-4106-ab44-97ea5c1a6bee.png)
 
-## Running the sample dashboard
+## サンプルダッシュボードの実行
 
-After checking out the project, you need to run the following command in the directory
+プロジェクトのチェックアウト後、次のコマンドを実行します。
 
 ```shell
 npm install -g serve
@@ -29,20 +27,21 @@ serve -s build
 
 ![Download](https://user-images.githubusercontent.com/1277117/174537241-e7c504a4-1690-40fd-a78b-413f4ef8c93e.png)
 
-The sample screen is implemented by loading the following two custom dashboards into an Iframe.
+サンプル画面は次の２つのユーザ定義ダッシュボードをiframeで構成します。
  - https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-4688-8282-c236e0d30b3c
  - https://support.jennifersoft.com:7979/userdefine/dashboard?key=0eae211c-d7b6-4696-8f1e-57c15b42f462
  
-## SSOLoginAdapter Class
+## SSOLoginAdapterクラス
 
-In this sample, the JENNIFER user ID and password are obtained through the URL query string. However, depending on the situation, HTTP request headers or adapter options could be used.
+この例では、JENNIFERユーザIDとパスワードはURLクエリ文字列から取得します。ただし、状況によってはHTTPヘッダーまたはアダプタのオプションを使用することも可能です。
 
 ```java
 public class SSOLoginAdapter implements SSOLoginHandler {
+
     public UserData preHandle(HttpServletRequest request) {
         String id = request.getParameter("id");
         String password = request.getParameter("password");
-
+        
         if (id != null && password != null) {
             LogUtil.info("Logging in with querystring : " + id + "," + password);
             return new UserData(id, password);
@@ -53,45 +52,46 @@ public class SSOLoginAdapter implements SSOLoginHandler {
 }
 ```
 
-## Authenticate with Jennifer URL
+## URL認証
 
-If the SSO login adapter has been added to the JENNIFER settings, user authentication with the following can be attempted through calling URL.
+SSOログインアダプタをJENNIFERサーバに登録すると、次のURLを使用してユーザ認証を行えます。
 
 > /login/sso (GET | POST) 
 
-For reference, the URL below actually works, and the environment is configured in advance for testing. The user information below could be used in practice, and is created in advance for this sample.
+次のURLは、サンプルとして構築した環境で実際使用できるURLです。
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234
 ```
 
-When user authentication is completed, the user is redirected to the preset start screen, but simply specify the path of the JENNIFER screen to be redirected in the 'redirect' parameter as follows. However, it is safe to encode through the encodeURIComponent function, a JavaScript native function.
+ユーザ認証を通ったら、事前定義された画面に移動します。もし、特定画面に移動させる場合は次のように'redirect'パラメータを使用して移動させる画面のURLを指定します。パラメータで使用するURLはエンコードした文字列を使用します。
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fuserdefine%2Fdashboard%3Fkey%3Dffca2b8b-4b35-4688-8282-c236e0d30b3c%26layout%3Diframe
 ```
 
-The actual URL of user authentication and redirect URL is as follows. To remove the left menu, the value of the 'layout' parameter is set to 'iframe'.
+上記の例での実際移動されるURLは次のようです。'layout'パラメータを'iframe'にすると、画面左側のメニューを表示しません。
 
 ```shell
 https://support.jennifersoft.com:7979/userdefine/dashboard?key=ffca2b8b-4b35-4688-8282-c236e0d30b3c&layout=iframe
 ```
 
-## Utilizing XView transaction analysis popup
+## X-Viewトランザクション分析ポップアップ画面
 
-When linking JENNIFER with other solutions, the most used screen is the XView transaction analysis popup. A user open the XView transaction analysis popup through the URL querystring as follows.
+X-Viewトランザクション分析ポップアップ画面を外部で使用する時は、次のようにURLパラメータを使用します。
 
 ```shell
-https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-3150495411826095874&searchTime=1655600449475
+https://support.jennifersoft.com:7900/popup/xviewAnalysis?domainId=3000&transactionId=-3150495411826095874&searchTime=1655600449475
 ```
-
-if users use the 'redirect' parameter without an SSO login adapter, you will be redirected to the login page if you are not logged in, and redirected back to the corresponding screen after logging in.
+### SSOログインアダプタを使用しない場合
+ブラウザにログインセッションが残ってない場合は、まずログインページへ移動し、認証を行います。ログインができましたら'redirect'パラメータのURLへ移動します。
 
 ```shell
 https://support.jennifersoft.com:7979/popup/xviewAnalysis?domainId=3000&transactionId=-3150495411826095874&searchTime=1655600449475&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3150495411826095874%26searchTime%3D1655600449475
 ```
 
-If users are using the SSO login adapter, user can open the XView transaction analysis popup directly from the outside with the URL below.
+### SSOログインアダプタを使用する場合
+ログインページへ移動せず、すぐX-Viewトランザクション分析ポップアップが表示されます。
 
 ```shell
 https://support.jennifersoft.com:7979/login/sso?id=iframe&password=1234&redirect=%2Fpopup%2FxviewAnalysis%3FdomainId%3D3000%26transactionId%3D-3150495411826095874%26searchTime%3D1655600449475
